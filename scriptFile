@@ -1,0 +1,78 @@
+#!/bin/bash
+
+
+show_menu() {
+    echo "File manneger"
+    echo "---------------------"
+    echo "1. creat new file"
+    echo "2. coppy file"
+    echo "3. move file"
+    echo "4.delete file"
+    echo "5. show list of file and dir"
+    echo "6. Exit >>> :( "
+    echo "---------------------"
+    echo "please enter your choice  : "
+}
+
+
+create_directory() {
+    echo "please enter new file name :"
+    read dirname
+    mkdir "$dirname"
+    echo "creat with name >>> $dirname "
+}
+
+
+copy_file() {
+    echo "please enter main file name :"
+    read source_file
+    echo "please enter destination file name :"
+    read destination_file
+    cp "$source_file" "$destination_file"
+    echo "file $source_file to $destination_file coppy ."
+}
+
+
+move_file() {
+    echo "please enter main name file"
+    read source_file
+    echo "please enter destination file name"
+    read destination_folder
+    mv "$source_file" "$destination_folder"
+    echo "file $source_file to $destination_folder move it "
+}
+
+
+delete_file() {
+    echo "please enter name file for delete :"
+    read filename
+    rm "$filename"
+    echo "file $filename deleted "
+}
+
+
+list_files() {
+    echo "show files and lists"
+    ls -al
+}
+
+
+
+while true; do
+    show_menu
+    read choice
+
+    case $choice in
+        1) create_directory ;;
+        2) copy_file ;;
+        3) move_file ;;
+        4) delete_file ;;
+        5) list_files ;;
+        6) break ;;
+        *) echo "please enter valid number" ;;
+    esac
+
+    echo ""
+done
+
+echo "EXIT programme"
